@@ -144,7 +144,7 @@ function card(tag, imgSrc, alt, jp, en, date, day, title, bullets, noteLabel, no
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">${jp}</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">${en}</div>
         </div>
-        
+        <img src="${imgSrc}" alt="${alt}" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day ${tag}</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -182,13 +182,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
 
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">到着</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Arrival in Tokyo</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 1</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_01_tokyo_arrival.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 1</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
@@ -207,13 +201,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     </article>
 
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">浅草</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Senso-ji &amp; Skytree</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 2</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_02_asakusa.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 2</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
@@ -232,13 +220,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     </article>
 
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">チームラボ</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">teamLab Planets</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 3</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_03_team.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 3</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
@@ -257,13 +239,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     </article>
 
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">渋谷</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shibuya &amp; Shinjuku</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 4</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_04_shibuya.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 4</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
@@ -282,13 +258,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     </article>
 
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open day</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 5</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_05_tsukiji.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 5</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
@@ -325,13 +295,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士急行</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Train to Kawaguchiko</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 6</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_06_fuji_train.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 6</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">19<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Friday</span></div>
@@ -347,13 +311,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
-          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士山</div>
-          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Mt. Fuji 5th Station</div>
-        </div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 7</span>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_07_fuji.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 7</span></div>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
         <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">20<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Saturday</span></div>
@@ -388,13 +346,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">新幹線</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shinkansen to Osaka</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 8</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">21<sup>st</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Sunday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_08_shinkansen.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 8</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Travel day <em class="italic">to Osaka</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Bus from Kawaguchiko to Mishima Station (~1:40)</li>
@@ -407,13 +359,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">大阪城</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Osaka Castle</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 9</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">22<sup>nd</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Monday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_09_osaka_castle.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 9</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Castle morning, <em class="italic">sky at dusk</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Osaka Castle at opening (9am) — beat the heat</li>
@@ -427,13 +373,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">USJ</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Universal Studios Japan</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 10</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">23<sup>rd</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Tuesday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_10_usj.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 10</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Universal Studios <em>· Nintendo World</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Leave Namba by 7am to be at gate before opening</li>
@@ -446,13 +386,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">道頓堀</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Dotonbori at night</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 11</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">24<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Wednesday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_11_dotonbori.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 11</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Shinsaibashi <em>+ Dotonbori</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Morning: Shinsaibashi covered arcade — shopping for Mom</li>
@@ -484,13 +418,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">移動日</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Toki via Nagoya</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 12</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">25<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Thursday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_12_nagoya.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 12</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Travel <em class="italic">day to Toki</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Shin-Osaka → Nagoya (~50 min shinkansen)</li>
@@ -503,13 +431,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 13</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">26<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Friday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_13_magome.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 13</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Open day · <em class="italic">options</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Magome–Tsumago hike — Edo-era post towns (~1 hr away)</li>
@@ -522,13 +444,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 14</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">27<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Saturday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_14_inuyama.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 14</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Open day · <em class="italic">options</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Pair with Day 13 for a region exploration</li>
@@ -541,13 +457,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">家族</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Family overlap day</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 15 ★</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">28<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Sunday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_15_tsumago.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 15 ★</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Brother arrives <em class="italic">· with mom</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Brother's family arrives in Toki</li>
@@ -579,13 +489,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">羽田</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Haneda area</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 16</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">29<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Monday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_16_shinagawa.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 16</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Toki to <em class="italic">Haneda area</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Toki → Nagoya (~50 min on local + transfer)</li>
@@ -598,13 +502,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">横浜</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Final explorations</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 17</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">30<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Tuesday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_17_yokohama.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 17</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Last day <em class="italic">· options</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Yokohama: Chinatown + Cup Noodles Museum</li>
@@ -617,13 +515,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
       </div>
     </article>
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
-      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">出発</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Departure</div></div>
-        
-        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 18</span>
-      </div>
-      <div class="p-4 md:p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">1<sup>st</sup> July</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Wednesday</span></div>
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10;background-image:url(assets/img_18_haneda.jpg);background-size:cover;background-position:center;"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 18</span></div>
         <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Home <em class="italic">· さようなら</em></h3>
         <ul class="list-none mb-4 pl-0 space-y-2">
           <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Leave hotel by 9–10am</li>
