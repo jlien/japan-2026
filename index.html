@@ -144,7 +144,7 @@ function card(tag, imgSrc, alt, jp, en, date, day, title, bullets, noteLabel, no
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">${jp}</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">${en}</div>
         </div>
-        <img src="${imgSrc}" alt="${alt}" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day ${tag}</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -187,7 +187,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">到着</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Arrival in Tokyo</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1542642838-47976bb7e2e3?q=80&w=1280&auto=format&fit=crop" alt="Ginza at dusk" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 1</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -212,7 +212,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">浅草</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Senso-ji &amp; Skytree</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1538106434560-9a425c7a3d74?q=80&w=1280&auto=format&fit=crop" alt="Kaminarimon Gate" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 2</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -237,7 +237,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">チームラボ</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">teamLab Planets</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1559577549-2e8843de1b49?q=80&w=1280&auto=format&fit=crop" alt="Toyosu skyline" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 3</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -262,7 +262,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">渋谷</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shibuya &amp; Shinjuku</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1503412608174-76a60c3e349e?q=80&w=1280&auto=format&fit=crop" alt="Shibuya Crossing" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 4</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -287,7 +287,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open day</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1610216792302-895ef6e4867f?q=80&w=1280&auto=format&fit=crop" alt="Tsukiji Outer Market" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 5</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -330,7 +330,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士急行</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Train to Kawaguchiko</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1549833704-e1e23e5e3e5e?q=80&w=1280&auto=format&fit=crop" alt="Fuji Excursion train" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 6</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -352,7 +352,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
           <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士山</div>
           <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Mt. Fuji 5th Station</div>
         </div>
-        <img src="https://images.unsplash.com/photo-1569138601299-d1fd41613944?q=80&w=1280&auto=format&fit=crop" alt="Mt. Fuji" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 7</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -390,7 +390,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">新幹線</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shinkansen to Osaka</div></div>
-        <img src="https://images.unsplash.com/photo-1543349463-d77e8e9448a3?q=80&w=1280&auto=format&fit=crop" alt="Shinkansen N700" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 8</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -409,7 +409,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">大阪城</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Osaka Castle</div></div>
-        <img src="https://images.unsplash.com/photo-1593957149786-7a9c54b9f4e2?q=80&w=1280&auto=format&fit=crop" alt="Osaka Castle" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 9</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -429,7 +429,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">USJ</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Universal Studios Japan</div></div>
-        <img src="https://images.unsplash.com/photo-1577446026943-d4ea17b44824?q=80&w=1280&auto=format&fit=crop" alt="USJ globe" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 10</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -448,7 +448,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">道頓堀</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Dotonbori at night</div></div>
-        <img src="https://images.unsplash.com/photo-1528698441143-71b30713ad54?q=80&w=1280&auto=format&fit=crop" alt="Dotonbori Glico sign" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 11</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -486,7 +486,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">移動日</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Toki via Nagoya</div></div>
-        <img src="https://images.unsplash.com/photo-1532091365912-32f4b46ae4a0?q=80&w=1280&auto=format&fit=crop" alt="Nagoya Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 12</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -505,7 +505,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
-        <img src="https://images.unsplash.com/photo-1600485050271-2f155402668f?q=80&w=1280&auto=format&fit=crop" alt="Magome post town" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 13</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -524,7 +524,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
-        <img src="https://images.unsplash.com/photo-1524413643658139-1504af58fb04?q=80&w=1280&auto=format&fit=crop" alt="Inuyama Castle" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 14</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -543,7 +543,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">家族</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Family overlap day</div></div>
-        <img src="https://images.unsplash.com/photo-1524413643658139-1504af58fb04?q=80&w=1280&auto=format&fit=crop" alt="Tsumago post town" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 15 ★</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -581,7 +581,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">羽田</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Haneda area</div></div>
-        <img src="https://images.unsplash.com/photo-1531206715511-7a93c14e8079?q=80&w=1280&auto=format&fit=crop" alt="Shinagawa Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 16</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -600,7 +600,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">横浜</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Final explorations</div></div>
-        <img src="https://images.unsplash.com/photo-1522788502361-14d3708911f0?q=80&w=1280&auto=format&fit=crop" alt="Yokohama Minato Mirai" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 17</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
@@ -619,7 +619,7 @@ function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft lead
     <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
       <div class="relative overflow-hidden" style="aspect-ratio:16/10;background:linear-gradient(135deg,#2d4259 0%,#1a2c3f 100%)">
         <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">出発</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Departure</div></div>
-        <img src="https://images.unsplash.com/photo-1557647847-b3b1c849958f?q=80&w=1280&auto=format&fit=crop" alt="Haneda Airport" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        
         <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 18</span>
       </div>
       <div class="p-4 md:p-5 flex flex-col flex-1">
