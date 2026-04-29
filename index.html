@@ -7,1540 +7,714 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Shippori+Mincho:wght@400;500;600;700;800&family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        washi: '#f7f1e6',
+        'washi-warm': '#f0e8d6',
+        sumi: '#1a1612',
+        'sumi-soft': '#2d2620',
+        shu: '#b8412c',
+        'shu-deep': '#8a2818',
+        indigo: '#2d4259',
+        'indigo-deep': '#1a2c3f',
+        gold: '#b8965d',
+        'gold-soft': '#d4b88a',
+        moss: '#4a5c3a',
+        paper: '#ffffff',
+        rule: '#d9cfbb',
+      },
+      fontFamily: {
+        serif: ['Fraunces', 'Shippori Mincho', 'Georgia', 'serif'],
+        jp: ['Shippori Mincho', 'serif'],
+        sans: ['Geologica', '-apple-system', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
 <style>
-  :root {
-    --washi: #f7f1e6;
-    --washi-warm: #f0e8d6;
-    --sumi: #1a1612;
-    --sumi-soft: #2d2620;
-    --shu: #b8412c;
-    --shu-deep: #8a2818;
-    --indigo: #2d4259;
-    --indigo-deep: #1a2c3f;
-    --gold: #b8965d;
-    --gold-soft: #d4b88a;
-    --moss: #4a5c3a;
-    --paper: #ffffff;
-    --rule: #d9cfbb;
-    --serif: 'Fraunces', 'Shippori Mincho', Georgia, serif;
-    --jp: 'Shippori Mincho', serif;
-    --sans: 'Geologica', -apple-system, sans-serif;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    color: var(--sumi);
-    background: var(--washi);
-    line-height: 1.6;
-    overflow-x: hidden;
-    background-image:
-      radial-gradient(ellipse at top left, rgba(184, 65, 44, 0.04), transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(45, 66, 89, 0.05), transparent 50%);
-  }
-
-  /* ====== HERO ====== */
-  .hero {
-    min-height: 100vh;
-    padding: 4rem 6vw 3rem;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    position: relative;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 8%;
-    right: -10%;
-    width: 50vw;
-    height: 50vw;
-    max-width: 700px;
-    max-height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, var(--shu) 0%, var(--shu-deep) 60%, transparent 70%);
-    opacity: 0.85;
-    filter: blur(0.5px);
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '日本';
-    position: absolute;
-    bottom: -2rem;
-    left: -2rem;
-    font-family: var(--jp);
-    font-size: clamp(12rem, 30vw, 28rem);
-    font-weight: 800;
-    color: var(--sumi);
-    opacity: 0.04;
-    line-height: 0.85;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--sumi-soft);
-    z-index: 2;
-    position: relative;
-  }
-
-  .hero-nav .dot {
-    width: 8px;
-    height: 8px;
-    background: var(--shu);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 0.7rem;
-    vertical-align: middle;
-  }
-
-  .hero-content {
-    align-self: center;
-    z-index: 2;
-    position: relative;
-    max-width: 1100px;
-  }
-
-  .hero-eyebrow {
-    font-family: var(--jp);
-    font-size: 1.2rem;
-    color: var(--shu);
-    letter-spacing: 0.5em;
-    margin-bottom: 2rem;
-    font-weight: 500;
-  }
-
-  .hero h1 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(4rem, 11vw, 11rem);
-    line-height: 0.88;
-    letter-spacing: -0.04em;
-    color: var(--sumi);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--shu);
-  }
-
-  .hero-dates {
-    font-family: var(--serif);
-    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--sumi-soft);
-    margin-bottom: 1rem;
-  }
-
-  .hero-route {
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--sumi-soft);
-    margin-top: 2rem;
-  }
-
-  .hero-route span { margin: 0 0.25rem; color: var(--shu); }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 2rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--rule);
-    z-index: 2;
-    position: relative;
-    max-width: 900px;
-  }
-
-  .hero-stat-num {
-    font-family: var(--serif);
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--sumi);
-    line-height: 1;
-  }
-
-  .hero-stat-num em {
-    font-style: italic;
-    color: var(--shu);
-  }
-
-  .hero-stat-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sumi-soft);
-    margin-top: 0.5rem;
-  }
-
-  /* ====== SECTION HEADERS ====== */
-  .section-head {
-    padding: 6rem 6vw 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .section-eyebrow {
-    font-family: var(--jp);
-    font-size: 0.95rem;
-    letter-spacing: 0.4em;
-    color: var(--shu);
-    margin-bottom: 1rem;
-    text-transform: none;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--sumi);
-  }
-
-  .section-title em { font-style: italic; color: var(--shu); }
-
-  .section-subtitle {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--sumi-soft);
-    margin-top: 1rem;
-    max-width: 600px;
-  }
-
-  /* ====== CALENDAR ====== */
-  .calendar-section {
-    padding: 0 6vw 5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
-
-  .day-header {
-    background: var(--sumi);
-    color: var(--washi);
-    padding: 0.8rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  .cal-day {
-    background: var(--paper);
-    padding: 1rem 0.85rem;
-    min-height: 130px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cal-day:hover {
-    background: var(--washi-warm);
-    transform: scale(1.02);
-    z-index: 3;
-    box-shadow: 0 4px 20px rgba(26, 22, 18, 0.12);
-  }
-
-  .cal-day.empty { background: transparent; cursor: default; }
-  .cal-day.empty:hover { transform: none; box-shadow: none; }
-
-  .cal-date {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--sumi);
-  }
-
-  .cal-month {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--sumi-soft);
-    margin-bottom: 0.6rem;
-  }
-
-  .cal-loc {
-    font-size: 0.78rem;
-    color: var(--sumi-soft);
-    margin-top: auto;
-    line-height: 1.3;
-  }
-
-  .cal-loc strong {
-    display: block;
-    color: var(--sumi);
-    font-weight: 600;
-    font-size: 0.8rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .cal-day[data-leg="tokyo"] { border-top: 3px solid var(--shu); }
-  .cal-day[data-leg="fuji"] { border-top: 3px solid var(--indigo); }
-  .cal-day[data-leg="osaka"] { border-top: 3px solid var(--gold); }
-  .cal-day[data-leg="toki"] { border-top: 3px solid var(--moss); }
-  .cal-day[data-leg="overlap"] { border-top: 3px solid var(--shu); background: linear-gradient(135deg, var(--paper) 0%, #fbf2e8 100%); }
-  .cal-day[data-leg="travel"] { background: var(--washi-warm); }
-
-  .cal-legend {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-    font-size: 0.8rem;
-    color: var(--sumi-soft);
-  }
-
-  .cal-legend span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .cal-legend i {
-    width: 24px;
-    height: 3px;
-    display: block;
-  }
-
-  /* ====== LEG SECTIONS ====== */
-  .leg {
-    padding: 5rem 0;
-    border-top: 1px solid var(--rule);
-    position: relative;
-  }
-
-  .leg-header {
-    padding: 0 6vw 4rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 900px) {
-    .leg-header { grid-template-columns: 1fr 1fr; align-items: end; }
-  }
-
-  .leg-num {
-    font-family: var(--jp);
-    font-size: 7rem;
-    font-weight: 700;
-    color: var(--shu);
-    line-height: 0.85;
-    opacity: 0.95;
-  }
-
-  .leg-name {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 5.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin: 0.5rem 0;
-  }
-
-  .leg-name em { font-style: italic; color: var(--shu); }
-
-  .leg-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-left: 4px solid var(--shu);
-  }
-
-  .leg-meta dt {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--sumi-soft);
-    margin-bottom: 0.25rem;
-  }
-
-  .leg-meta dd {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    color: var(--sumi);
-    margin-bottom: 0.8rem;
-  }
-
-  .leg-meta dd:last-child { margin-bottom: 0; }
-
-  /* Day cards */
-  .days {
-    padding: 0 6vw;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  @media (min-width: 900px) {
-    .days { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (min-width: 1200px) {
-    .days { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  .day-card {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.4s ease;
-  }
-
-  .day-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(26, 22, 18, 0.1);
-  }
-
-  .day-image {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-deep) 100%);
-  }
-
-  .day-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
-  }
-
-  .day-card:hover .day-image img { transform: scale(1.06); }
-
-  .day-image-fallback {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--washi);
-    text-align: center;
-    padding: 1rem;
-    z-index: 0;
-  }
-
-  .day-image-fallback .jp {
-    font-family: var(--jp);
-    font-size: 3rem;
-    font-weight: 700;
-    opacity: 0.85;
-    margin-bottom: 0.5rem;
-  }
-
-  .day-image-fallback .en {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
-    opacity: 0.75;
-    letter-spacing: 0.05em;
-  }
-
-  .day-image img { position: relative; z-index: 1; }
-
-  .day-tag {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--washi);
-    color: var(--sumi);
-    padding: 0.4rem 0.9rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 600;
-    z-index: 2;
-  }
-
-  .day-body {
-    padding: 1.6rem 1.6rem 1.8rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .day-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.8rem;
-  }
-
-  .day-meta-date {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-  }
-
-  .day-meta-day {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--shu);
-    font-weight: 600;
-  }
-
-  .day-title {
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .day-title em { font-style: italic; color: var(--shu); }
-
-  .day-list {
-    list-style: none;
-    margin: 0 0 1rem 0;
-    padding: 0;
-  }
-
-  .day-list li {
-    position: relative;
-    padding-left: 1.4rem;
-    font-size: 0.92rem;
-    color: var(--sumi-soft);
-    margin-bottom: 0.5rem;
-    line-height: 1.45;
-  }
-
-  .day-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55rem;
-    width: 8px;
-    height: 1px;
-    background: var(--shu);
-  }
-
-  .day-note {
-    margin-top: auto;
-    padding: 0.8rem 1rem;
-    background: var(--washi);
-    border-left: 2px solid var(--gold);
-    font-size: 0.82rem;
-    color: var(--sumi-soft);
-    font-style: italic;
-  }
-
-  .day-note strong {
-    font-style: normal;
-    color: var(--sumi);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.2rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  /* ====== BOOKINGS ====== */
-  .bookings {
-    background: var(--sumi);
-    color: var(--washi);
-    padding: 6rem 6vw;
-    margin-top: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .bookings::before {
-    content: '予';
-    position: absolute;
-    right: -3rem;
-    top: -2rem;
-    font-family: var(--jp);
-    font-size: 24rem;
-    font-weight: 800;
-    color: var(--shu);
-    opacity: 0.08;
-    pointer-events: none;
-  }
-
-  .bookings-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-
-  .bookings .section-eyebrow { color: var(--gold-soft); }
-
-  .bookings .section-title { color: var(--washi); }
-
-  .bookings .section-title em { color: var(--gold-soft); }
-
-  .bookings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .booking-card {
-    border: 1px solid rgba(247, 241, 230, 0.15);
-    padding: 1.6rem;
-    transition: all 0.3s ease;
-  }
-
-  .booking-card:hover {
-    background: rgba(247, 241, 230, 0.04);
-    border-color: var(--gold);
-  }
-
-  .booking-priority {
-    display: inline-block;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    padding: 0.25rem 0.7rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .booking-priority.urgent { background: var(--shu); color: var(--washi); }
-  .booking-priority.soon { background: var(--gold); color: var(--sumi); }
-  .booking-priority.later { background: rgba(247, 241, 230, 0.15); color: var(--washi); }
-
-  .booking-name {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .booking-detail {
-    font-size: 0.85rem;
-    color: rgba(247, 241, 230, 0.7);
-    line-height: 1.5;
-  }
-
-  /* ====== NOTES ====== */
-  .notes {
-    padding: 6rem 6vw;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-  }
-
-  .note-card h3 {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .note-card h3 .num {
-    font-family: var(--jp);
-    color: var(--shu);
-    margin-right: 0.5rem;
-  }
-
-  .note-card p {
-    color: var(--sumi-soft);
-    font-size: 0.95rem;
-    line-height: 1.65;
-  }
-
-  /* ====== FOOTER ====== */
-  footer {
-    background: var(--sumi);
-    color: var(--washi);
-    padding: 4rem 6vw 3rem;
-    text-align: center;
-  }
-
-  footer .jp {
-    font-family: var(--jp);
-    font-size: 2rem;
-    color: var(--shu);
-    margin-bottom: 1rem;
-    letter-spacing: 0.5em;
-  }
-
-  footer p {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  footer small {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(247, 241, 230, 0.5);
-  }
-
-  /* ====== ANIMATIONS ====== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow, .hero h1, .hero-dates, .hero-route, .hero-stats {
-    animation: fadeUp 1s cubic-bezier(0.2, 0.6, 0.2, 1) backwards;
-  }
-
-  .hero h1 { animation-delay: 0.1s; }
-  .hero-dates { animation-delay: 0.3s; }
-  .hero-route { animation-delay: 0.5s; }
-  .hero-stats { animation-delay: 0.7s; }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .hero { padding: 3rem 6vw 2rem; min-height: auto; }
-    .calendar-grid { grid-template-columns: repeat(7, 1fr); font-size: 0.7rem; gap: 2px; }
-    .cal-day { padding: 0.4rem; min-height: 80px; }
-    .cal-date { font-size: 1rem; }
-    .cal-loc { font-size: 0.6rem; }
-    .cal-loc strong { font-size: 0.65rem; }
-    .day-header { padding: 0.5rem 0.2rem; font-size: 0.55rem; letter-spacing: 0.1em; }
-    .leg-num { font-size: 4rem; }
-    .leg-meta { padding: 1.5rem; }
-  }
+  html{scroll-behavior:smooth}
+  body{background-color:#f7f1e6;background-image:radial-gradient(ellipse at top left,rgba(184,65,44,.04),transparent 50%),radial-gradient(ellipse at bottom right,rgba(45,66,89,.05),transparent 50%)}
+  @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .afu{animation:fu 1s cubic-bezier(.2,.6,.2,1) backwards}
+  .ad1{animation-delay:.1s}.ad2{animation-delay:.3s}.ad3{animation-delay:.5s}.ad4{animation-delay:.7s}
+  .day-c:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(26,22,18,.1)}
+  .cal-d:hover{transform:scale(1.02)}
+  .day-img:hover img{transform:scale(1.06)}
+  .day-img img{transition:transform .6s ease}
+  .day-c{transition:all .4s ease}
+  .cal-d{transition:all .3s ease}
+  .bk:hover{background:rgba(247,241,230,.04);border-color:#b8965d}
+  .ce{cursor:default}.ce:hover{transform:none;box-shadow:none}
+  @media(max-width:768px){.hero{min-height:auto}}
 </style>
 </head>
-<body>
+<body class="font-sans text-sumi leading-relaxed overflow-x-hidden antialiased">
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="hero-nav">
-    <span><span class="dot"></span>Family Trip · Five Travelers</span>
-    <span>2026</span>
+<header class="relative min-h-screen flex flex-col border-b border-rule">
+  <div class="absolute top-[8%] right-[-10%] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] rounded-full pointer-events-none opacity-85" style="background:radial-gradient(circle at 30% 30%,#b8412c 0%,#8a2818 60%,transparent 70%);filter:blur(.5px)"></div>
+  <div class="absolute bottom-[-2rem] left-[-2rem] font-jp font-bold leading-[.85] pointer-events-none text-sumi opacity-[.04]" style="font-size:clamp(8rem,30vw,18rem)">日本</div>
+  <div class="flex justify-between items-center text-xs tracking-[.18em] uppercase text-sumi-soft relative z-10 py-6 px-6">
+    <span class="flex items-center gap-[.7rem]"><span class="w-2 h-2 rounded-full bg-shu inline-block"></span>Family Trip · Five Travelers</span><span>2026</span>
   </div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">日 本 旅 行</div>
-    <h1>An <em>itinerary</em><br/>for Japan.</h1>
-    <div class="hero-dates">June fourteenth — July first, twenty&#8209;twenty&#8209;six</div>
-    <div class="hero-route">
-      Tokyo<span>·</span>Fuji<span>·</span>Osaka<span>·</span>Toki<span>·</span>Tokyo
-    </div>
+  <div class="flex flex-col items-center justify-center flex-1 relative z-10 px-6 max-w-[1100px] mx-auto w-full">
+    <div class="font-jp text-sm tracking-[.5em] text-shu mb-6 font-medium afu">日 本 旅 行</div>
+    <h1 class="font-serif font-light leading-[.88] tracking-[-.04em] text-sumi text-center mb-6 afu ad1" style="font-size:clamp(3.5rem,11vw,11rem)">An <em class="italic font-normal text-shu">itinerary</em><br/>for Japan.</h1>
+    <div class="font-serif text-lg md:text-xl italic font-light text-sumi-soft mb-4 afu ad2">June fourteenth — July first, twenty&#8209;twenty&#8209;six</div>
+    <div class="font-sans text-sm tracking-[.32em] uppercase text-sumi-soft mt-6 afu ad3">Tokyo<span class="mx-[.25rem] text-shu">·</span>Fuji<span class="mx-[.25rem] text-shu">·</span>Osaka<span class="mx-[.25rem] text-shu">·</span>Toki<span class="mx-[.25rem] text-shu">·</span>Tokyo</div>
   </div>
-
-  <div class="hero-stats">
-    <div>
-      <div class="hero-stat-num"><em>18</em></div>
-      <div class="hero-stat-label">Days on the road</div>
-    </div>
-    <div>
-      <div class="hero-stat-num"><em>5</em></div>
-      <div class="hero-stat-label">Cities & towns</div>
-    </div>
-    <div>
-      <div class="hero-stat-num"><em>4</em></div>
-      <div class="hero-stat-label">Hotels</div>
-    </div>
-    <div>
-      <div class="hero-stat-num"><em>3</em></div>
-      <div class="hero-stat-label">Days with family</div>
-    </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 border-t border-rule relative z-10 max-w-[900px] mx-auto w-full px-6">
+    <div class="text-center"><div class="font-serif text-3xl md:text-[3rem] font-light leading-tight text-sumi afu ad4"><em class="text-shu">18</em></div><div class="text-[.6rem] md:text-[.72rem] tracking-[.2em] uppercase text-sumi-soft mt-2">Days on the road</div></div>
+    <div class="text-center"><div class="font-serif text-3xl md:text-[3rem] font-light leading-tight text-sumi afu ad4"><em class="text-shu">5</em></div><div class="text-[.6rem] md:text-[.72rem] tracking-[.2em] uppercase text-sumi-soft mt-2">Cities &amp; towns</div></div>
+    <div class="text-center"><div class="font-serif text-3xl md:text-[3rem] font-light leading-tight text-sumi afu ad4"><em class="text-shu">4</em></div><div class="text-[.6rem] md:text-[.72rem] tracking-[.2em] uppercase text-sumi-soft mt-2">Hotels</div></div>
+    <div class="text-center"><div class="font-serif text-3xl md:text-[3rem] font-light leading-tight text-sumi afu ad4"><em class="text-shu">3</em></div><div class="text-[.6rem] md:text-[.72rem] tracking-[.2em] uppercase text-sumi-soft mt-2">Days with family</div></div>
   </div>
 </header>
 
-<!-- ============ CALENDAR ============ -->
-<div class="section-head">
-  <div class="section-eyebrow">予 定 表 · The Calendar</div>
-  <h2 class="section-title">Eighteen days, <em>at a glance</em></h2>
-  <p class="section-subtitle">A bird's-eye view of where we'll be and what we're doing each day.</p>
+<div class="py-12 md:py-24 max-w-[1400px] mx-auto px-6">
+  <div class="font-jp text-[.95rem] tracking-[.4em] text-shu mb-4">予 定 表 · The Calendar</div>
+  <h2 class="font-serif font-light text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-[-.02em] text-sumi">Eighteen days, <em class="italic text-shu">at a glance</em></h2>
+  <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">A bird's-eye view of where we'll be and what we're doing each day.</p>
 </div>
 
-<section class="calendar-section">
-  <div class="calendar-grid">
-    <div class="day-header">Sun</div>
-    <div class="day-header">Mon</div>
-    <div class="day-header">Tue</div>
-    <div class="day-header">Wed</div>
-    <div class="day-header">Thu</div>
-    <div class="day-header">Fri</div>
-    <div class="day-header">Sat</div>
-
-    <!-- Week 1: Jun 14 (Sun) – Jun 20 (Sat) -->
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">14</div>
-      <div class="cal-month">Jun · Sun</div>
-      <div class="cal-loc"><strong>Tokyo</strong>Arrive · Haneda</div>
-    </div>
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">15</div>
-      <div class="cal-month">Jun · Mon</div>
-      <div class="cal-loc"><strong>Tokyo</strong>Asakusa · Skytree</div>
-    </div>
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">16</div>
-      <div class="cal-month">Jun · Tue</div>
-      <div class="cal-loc"><strong>Tokyo</strong>teamLab Planets</div>
-    </div>
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">17</div>
-      <div class="cal-month">Jun · Wed</div>
-      <div class="cal-loc"><strong>Tokyo</strong>Shibuya · Harajuku</div>
-    </div>
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">18</div>
-      <div class="cal-month">Jun · Thu</div>
-      <div class="cal-loc"><strong>Tokyo</strong>Open day</div>
-    </div>
-    <div class="cal-day" data-leg="travel">
-      <div class="cal-date">19</div>
-      <div class="cal-month">Jun · Fri</div>
-      <div class="cal-loc"><strong>→ Fuji</strong>Train · Kawaguchiko</div>
-    </div>
-    <div class="cal-day" data-leg="fuji">
-      <div class="cal-date">20</div>
-      <div class="cal-month">Jun · Sat</div>
-      <div class="cal-loc"><strong>Fuji</strong>5th Stn · Fishing</div>
-    </div>
-
-    <!-- Week 2: Jun 21 (Sun) – Jun 27 (Sat) -->
-    <div class="cal-day" data-leg="travel">
-      <div class="cal-date">21</div>
-      <div class="cal-month">Jun · Sun</div>
-      <div class="cal-loc"><strong>→ Osaka</strong>Shinkansen</div>
-    </div>
-    <div class="cal-day" data-leg="osaka">
-      <div class="cal-date">22</div>
-      <div class="cal-month">Jun · Mon</div>
-      <div class="cal-loc"><strong>Osaka</strong>Castle · Umeda Sky</div>
-    </div>
-    <div class="cal-day" data-leg="osaka">
-      <div class="cal-date">23</div>
-      <div class="cal-month">Jun · Tue</div>
-      <div class="cal-loc"><strong>Osaka</strong>Universal Studios</div>
-    </div>
-    <div class="cal-day" data-leg="osaka">
-      <div class="cal-date">24</div>
-      <div class="cal-month">Jun · Wed</div>
-      <div class="cal-loc"><strong>Osaka</strong>Shinsaibashi · Dotonbori</div>
-    </div>
-    <div class="cal-day" data-leg="travel">
-      <div class="cal-date">25</div>
-      <div class="cal-month">Jun · Thu</div>
-      <div class="cal-loc"><strong>→ Toki</strong>Train via Nagoya</div>
-    </div>
-    <div class="cal-day" data-leg="toki">
-      <div class="cal-date">26</div>
-      <div class="cal-month">Jun · Fri</div>
-      <div class="cal-loc"><strong>Toki</strong>Open</div>
-    </div>
-    <div class="cal-day" data-leg="toki">
-      <div class="cal-date">27</div>
-      <div class="cal-month">Jun · Sat</div>
-      <div class="cal-loc"><strong>Toki</strong>Open</div>
-    </div>
-
-    <!-- Week 3: Jun 28 (Sun) – Jul 1 (Wed) -->
-    <div class="cal-day" data-leg="overlap">
-      <div class="cal-date">28</div>
-      <div class="cal-month">Jun · Sun</div>
-      <div class="cal-loc"><strong>Toki</strong>Brother arrives ★</div>
-    </div>
-    <div class="cal-day" data-leg="travel">
-      <div class="cal-date">29</div>
-      <div class="cal-month">Jun · Mon</div>
-      <div class="cal-loc"><strong>→ Tokyo</strong>To Haneda area</div>
-    </div>
-    <div class="cal-day" data-leg="tokyo">
-      <div class="cal-date">30</div>
-      <div class="cal-month">Jun · Tue</div>
-      <div class="cal-loc"><strong>Tokyo</strong>Explore</div>
-    </div>
-    <div class="cal-day" data-leg="travel">
-      <div class="cal-date">1</div>
-      <div class="cal-month">Jul · Wed</div>
-      <div class="cal-loc"><strong>Depart</strong>Haneda · 1pm</div>
-    </div>
-    <div class="cal-day empty"></div>
-    <div class="cal-day empty"></div>
-    <div class="cal-day empty"></div>
+<section class="pb-14 max-w-[1400px] mx-auto px-3 md:px-6">
+  <div class="grid grid-cols-7 gap-[2px] md:gap-1 bg-rule border border-rule overflow-hidden">
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Sun</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Mon</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Tue</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Wed</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Thu</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Fri</div>
+    <div class="bg-sumi text-washi py-2 md:py-3 text-[.6rem] md:text-[.7rem] tracking-[.2em] uppercase text-center">Sat</div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">14</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Sun</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>Arrive · Haneda</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">15</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Mon</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>Asakusa · Skytree</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">16</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Tue</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>teamLab Planets</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">17</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Wed</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>Shibuya · Harajuku</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">18</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Thu</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>Open day</div></div>
+    <div class="cal-d bg-washi-warm p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="travel"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">19</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Fri</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">→ Fuji</strong>Train · Kawaguchiko</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-indigo" data-leg="fuji"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">20</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Sat</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Fuji</strong>5th Stn · Fishing</div></div>
+    <div class="cal-d bg-washi-warm p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="travel"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">21</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Sun</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">→ Osaka</strong>Shinkansen</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-gold" data-leg="osaka"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">22</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Mon</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Osaka</strong>Castle · Umeda Sky</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-gold" data-leg="osaka"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">23</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Tue</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Osaka</strong>Universal Studios</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-gold" data-leg="osaka"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">24</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Wed</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Osaka</strong>Shinsaibashi · Dotonbori</div></div>
+    <div class="cal-d bg-washi-warm p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="travel"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">25</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Thu</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">→ Toki</strong>Train via Nagoya</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-moss" data-leg="toki"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">26</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Fri</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Toki</strong>Open</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-moss" data-leg="toki"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">27</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Sat</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Toki</strong>Open</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-shu" style="background:linear-gradient(135deg,#fff 0%,#fbf2e8 100%)" data-leg="overlap"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">28</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Sun</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Toki</strong>Brother arrives ★</div></div>
+    <div class="cal-d bg-washi-warm p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="travel"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">29</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Mon</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">→ Tokyo</strong>To Haneda area</div></div>
+    <div class="cal-d bg-paper p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative border-t-[3px] border-shu" data-leg="tokyo"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">30</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jun · Tue</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Tokyo</strong>Explore</div></div>
+    <div class="cal-d bg-washi-warm p-2 md:p-3 min-h-[110px] md:min-h-[130px] flex flex-col cursor-pointer relative" data-leg="travel"><div class="font-serif text-lg md:text-[1.4rem] font-normal text-sumi">1</div><div class="text-[.6rem] tracking-[.18em] uppercase text-sumi-soft mb-1">Jul · Wed</div><div class="mt-auto text-sm text-sumi-soft leading-relaxed"><strong class="block text-sumi text-[.8rem] font-semibold mb-0.5">Depart</strong>Haneda · 1pm</div></div>
+    <div class="ce bg-transparent"></div><div class="ce bg-transparent"></div><div class="ce bg-transparent"></div>
   </div>
-
-  <div class="cal-legend">
-    <span><i style="background:var(--shu)"></i> Tokyo</span>
-    <span><i style="background:var(--indigo)"></i> Mt. Fuji</span>
-    <span><i style="background:var(--gold)"></i> Osaka</span>
-    <span><i style="background:var(--moss)"></i> Toki / Gifu</span>
-    <span><i style="background:var(--washi-warm)"></i> Travel day</span>
+  <div class="flex flex-wrap gap-4 md:gap-8 mt-6 text-sm text-sumi-soft">
+    <span class="flex items-center gap-2"><span class="w-6 h-[3px] inline-block rounded" style="background:#b8412c"></span> Tokyo</span>
+    <span class="flex items-center gap-2"><span class="w-6 h-[3px] inline-block rounded bg-indigo"></span> Mt. Fuji</span>
+    <span class="flex items-center gap-2"><span class="w-6 h-[3px] inline-block rounded bg-gold"></span> Osaka</span>
+    <span class="flex items-center gap-2"><span class="w-6 h-[3px] inline-block rounded bg-moss"></span> Toki / Gifu</span>
+    <span class="flex items-center gap-2"><span class="w-6 h-[3px] inline-block rounded bg-washi-warm"></span> Travel day</span>
     <span>★ Family overlap</span>
   </div>
 </section>
 
-<!-- ============ LEG 1: TOKYO ============ -->
-<section class="leg" id="tokyo">
-  <div class="leg-header">
-    <div>
-      <div class="leg-num">壱</div>
-      <h2 class="leg-name">Tokyo, <em>arrival</em></h2>
-      <p class="section-subtitle">Five days to settle in, work through the major neighborhoods, and shake the jet lag before heading to the mountain.</p>
+<script>
+function leg(name, kanji, title, subtitle, meta){
+  const m = meta.map(d => `<div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">${d[0]}</dt><dd class="font-serif text-lg md:text-xl text-sumi">${d[1]}</dd></div>`).join('');
+  return `<section class="border-t border-rule" id="${name}">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">${kanji}</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">${title}</h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">${subtitle}</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">${m}</dl>
     </div>
-    <dl class="leg-meta">
-      <div><dt>Dates</dt><dd>June 14 – 19 · 5 nights</dd></div>
-      <div><dt>Hotel</dt><dd>MONday Apart Ginza Shintomicho</dd></div>
-      <div><dt>Arrive via</dt><dd>Haneda Airport (book transport via Klook)</dd></div>
-    </dl>
   </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">${name === 'osaka' ? '<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:col-span-4">' : ''}`
+}
 
-  <div class="days">
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">到着</div><div class="en">Arrival in Tokyo</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ginza_at_dusk_December_2017.jpg/1280px-Ginza_at_dusk_December_2017.jpg" alt="Ginza at dusk" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 1</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">14<sup>th</sup> June</span>
-          <span class="day-meta-day">Sunday</span>
+function card(tag, imgSrc, alt, jp, en, date, day, title, bullets, noteLabel, note){
+  return `<article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">${jp}</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">${en}</div>
         </div>
-        <h3 class="day-title">Land at Haneda, settle <em>in Ginza</em></h3>
-        <ul class="day-list">
-          <li>Arrive Haneda — pre-booked Klook transfer to Ginza Shintomicho</li>
-          <li>Check in at MONday Apart, drop bags</li>
-          <li>Easy first walk: Ginza or Tsukiji Outer Market</li>
-          <li>Department-store food hall dinner (Mitsukoshi or Matsuya)</li>
-          <li>Bed by 9–10pm to lock in time shift</li>
+        <img src="${imgSrc}" alt="${alt}" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day ${tag}</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">${date}</span>
+          <span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">${day}</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">${title}</h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">${bullets}</ul>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic">
+          <strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">${noteLabel}</strong>${note}
+        </div>
+      </div>
+    </article>`
+}
+
+function li(text) { return `<li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">${text}</li>` }
+</script>
+
+<section class="border-t border-rule" id="tokyo">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">壱</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">Tokyo, <em class="italic text-shu">arrival</em></h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">Five days to settle in, work through the major neighborhoods, and shake the jet lag before heading to the mountain.</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Dates</dt><dd class="font-serif text-lg md:text-xl text-sumi">June 14 – 19 · 5 nights</dd></div>
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Hotel</dt><dd class="font-serif text-lg md:text-xl text-sumi">MONday Apart Ginza Shintomicho</dd></div>
+        <div><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Arrive via</dt><dd class="font-serif text-lg md:text-xl text-sumi">Haneda Airport (book transport via Klook)</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
+
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">到着</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Arrival in Tokyo</div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ginza_at_dusk_December_2017.jpg/1280px-Ginza_at_dusk_December_2017.jpg" alt="Ginza at dusk" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 1</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">14<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Sunday</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Land at Haneda, settle <em class="italic text-shu">in Ginza</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Arrive Haneda — pre-booked Klook transfer to Ginza Shintomicho</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Check in at MONday Apart, drop bags</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Easy first walk: Ginza or Tsukiji Outer Market</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Department-store food hall dinner (Mitsukoshi or Matsuya)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Bed by 9–10pm to lock in time shift</li>
         </ul>
-        <div class="day-note"><strong>Tip</strong>Resist the nap. A short walk + early dinner is the fastest jet-lag fix.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Tip</strong>Resist the nap. A short walk + early dinner is the fastest jet-lag fix.</div>
       </div>
     </article>
 
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">浅草</div><div class="en">Senso-ji & Skytree</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Kaminarimon_Gate_2014.jpg/1280px-Kaminarimon_Gate_2014.jpg" alt="Kaminarimon Gate at Senso-ji" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 2</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">15<sup>th</sup> June</span>
-          <span class="day-meta-day">Monday</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">浅草</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Senso-ji &amp; Skytree</div>
         </div>
-        <h3 class="day-title">Asakusa, Ueno <em>& Skytree</em></h3>
-        <ul class="day-list">
-          <li>Senso-ji Temple at opening (9am, before crowds)</li>
-          <li>Nakamise shopping street + Kappabashi (knife st.)</li>
-          <li>Lunch in Asakusa — tonkatsu or unagi</li>
-          <li>Tokyo Skytree — book timed entry online</li>
-          <li>Ueno Park & Ameyoko market for dinner snacks</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Kaminarimon_Gate_2014.jpg/1280px-Kaminarimon_Gate_2014.jpg" alt="Kaminarimon Gate" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 2</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">15<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Monday</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Asakusa, Ueno <em>&amp; Skytree</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Senso-ji Temple at opening (9am, before crowds)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Nakamise shopping street + Kappabashi (knife st.)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Lunch in Asakusa — tonkatsu or unagi</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Tokyo Skytree — book timed entry online</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Ueno Park &amp; Ameyoko market for dinner snacks</li>
         </ul>
-        <div class="day-note"><strong>Heads up</strong>Mondays = many Ueno museums closed (Tokyo National Museum, Ueno Zoo). Plan around it or skip for the open day on the 18th.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Heads up</strong>Mondays = many Ueno museums closed. Plan around it or skip for the open day on the 18th.</div>
       </div>
     </article>
 
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">チームラボ</div><div class="en">teamLab Planets</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Toyosu_Skyline.jpg/1280px-Toyosu_Skyline.jpg" alt="Toyosu skyline" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 3</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">16<sup>th</sup> June</span>
-          <span class="day-meta-day">Tuesday</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">チームラボ</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">teamLab Planets</div>
         </div>
-        <h3 class="day-title">teamLab Planets <em>· Toyosu</em></h3>
-        <ul class="day-list">
-          <li>9:30am entry — already reserved ✓</li>
-          <li>Wear shorts/easily rolled pants — water rooms</li>
-          <li>Lunch at Toyosu Senkyaku Banrai food hall</li>
-          <li>Toyosu Fish Market or Odaiba in the afternoon</li>
-          <li>Back to Ginza for relaxed dinner</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Toyosu_Skyline.jpg/1280px-Toyosu_Skyline.jpg" alt="Toyosu skyline" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 3</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">16<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Tuesday</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">teamLab Planets <em>· Toyosu</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">9:30am entry — already reserved ✓</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Wear shorts/easily rolled pants — water rooms</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Lunch at Toyosu Senkyaku Banrai food hall</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Toyosu Fish Market or Odaiba in the afternoon</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Back to Ginza for relaxed dinner</li>
         </ul>
-        <div class="day-note"><strong>Booked</strong>teamLab Planets · 9:30am entry confirmed.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Booked</strong>teamLab Planets · 9:30am entry confirmed.</div>
       </div>
     </article>
 
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">渋谷</div><div class="en">Shibuya & Shinjuku</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Shibuya_Crossing_at_Night.jpg/1280px-Shibuya_Crossing_at_Night.jpg" alt="Shibuya Crossing at night" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 4</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">17<sup>th</sup> June</span>
-          <span class="day-meta-day">Wednesday</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">渋谷</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shibuya &amp; Shinjuku</div>
         </div>
-        <h3 class="day-title">Harajuku, Shibuya <em>& Shinjuku</em></h3>
-        <ul class="day-list">
-          <li>Meiji Shrine — quiet morning forest walk</li>
-          <li>Takeshita Street + Omotesando in Harajuku</li>
-          <li>Walk Cat Street down to Shibuya Crossing</li>
-          <li>Shibuya Sky observation deck at sunset ★</li>
-          <li>Dinner Shinjuku — Omoide Yokocho or dept. food floor</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Shibuya_Crossing_at_Night.jpg/1280px-Shibuya_Crossing_at_Night.jpg" alt="Shibuya Crossing" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 4</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">17<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Wednesday</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Harajuku, Shibuya <em>&amp; Shinjuku</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Meiji Shrine — quiet morning forest walk</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Takeshita Street + Omotesando in Harajuku</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Walk Cat Street down to Shibuya Crossing</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Shibuya Sky observation deck at sunset ★</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Dinner Shinjuku — Omoide Yokocho or dept. food floor</li>
         </ul>
-        <div class="day-note"><strong>Reserve</strong>Shibuya Sky sunset slot — books out weeks ahead.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Reserve</strong>Shibuya Sky sunset slot — books out weeks ahead.</div>
       </div>
     </article>
 
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">自由</div><div class="en">Open day</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Tsukiji_Outer_Market_2018.jpg/1280px-Tsukiji_Outer_Market_2018.jpg" alt="Tsukiji Outer Market" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 5</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">18<sup>th</sup> June</span>
-          <span class="day-meta-day">Thursday</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open day</div>
         </div>
-        <h3 class="day-title">Open day <em>· flex</em></h3>
-        <ul class="day-list">
-          <li>Suggested: Tsukiji Outer Market for breakfast (10 min walk!)</li>
-          <li>Hamarikyu Gardens — tea house in the pond</li>
-          <li>Or: Kamakura day trip · Great Buddha + Hase-dera</li>
-          <li>Or: Yanaka & Nezu old neighborhoods</li>
-          <li>Forward big bags to Hotel Koryu via Yamato (takkyubin)</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Tsukiji_Outer_Market_2018.jpg/1280px-Tsukiji_Outer_Market_2018.jpg" alt="Tsukiji Outer Market" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 5</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4">
+          <span class="font-serif text-xl md:text-2xl font-normal">18<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Thursday</span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Open day <em>· flex</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Suggested: Tsukiji Outer Market for breakfast (10 min walk!)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Hamarikyu Gardens — tea house in the pond</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Or: Kamakura day trip · Great Buddha + Hase-dera</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Or: Yanaka &amp; Nezu old neighborhoods</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Forward big bags to Hotel Koryu via Yamato (takkyubin)</li>
         </ul>
-        <div class="day-note"><strong>Logistics</strong>Send big bags ahead today — travel light to Fuji tomorrow.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Logistics</strong>Send big bags ahead today — travel light to Fuji tomorrow.</div>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- ============ LEG 2: FUJI ============ -->
-<section class="leg" id="fuji">
-  <div class="leg-header">
-    <div>
-      <div class="leg-num">弐</div>
-      <h2 class="leg-name">Mount Fuji, <em>Kawaguchiko</em></h2>
-      <p class="section-subtitle">Two nights at the lake, with luck and a clear morning.</p>
+<section class="border-t border-rule" id="fuji">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">弐</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">Mount Fuji, <em class="italic text-shu">Kawaguchiko</em></h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">Two nights at the lake, with luck and a clear morning.</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Dates</dt><dd class="font-serif text-lg md:text-xl text-sumi">June 19 – 21 · 2 nights</dd></div>
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Hotel</dt><dd class="font-serif text-lg md:text-xl text-sumi">Hotel Koryu (booked ✓)</dd></div>
+        <div><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Arrive via</dt><dd class="font-serif text-lg md:text-xl text-sumi">Limited Express "Fuji Excursion" from Shinjuku</dd></div>
+      </dl>
     </div>
-    <dl class="leg-meta">
-      <div><dt>Dates</dt><dd>June 19 – 21 · 2 nights</dd></div>
-      <div><dt>Hotel</dt><dd>Hotel Koryu (booked ✓)</dd></div>
-      <div><dt>Arrive via</dt><dd>Limited Express "Fuji Excursion" from Shinjuku</dd></div>
-    </dl>
   </div>
-
-  <div class="days">
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">富士急行</div><div class="en">Train to Kawaguchiko</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Fujikyu_8500_series_Fuji_Excursion_Otsuki_20190323.jpg/1280px-Fujikyu_8500_series_Fuji_Excursion_Otsuki_20190323.jpg" alt="Fuji Excursion train" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 6</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">19<sup>th</sup> June</span>
-          <span class="day-meta-day">Friday</span>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士急行</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Train to Kawaguchiko</div>
         </div>
-        <h3 class="day-title">Tokyo to <em>Kawaguchiko</em></h3>
-        <ul class="day-list">
-          <li>From Ginza Shintomicho → Shinjuku Station (~25 min)</li>
-          <li>Limited Express "Fuji Excursion" → Kawaguchiko (~2 hrs)</li>
-          <li>Check in at Hotel Koryu, lake-view room</li>
-          <li>Easy afternoon: Lake Kawaguchi walk, ropeway up Mt. Tenjo</li>
-          <li>Hotel onsen + kaiseki dinner</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Fujikyu_8500_series_Fuji_Excursion_Otsuki_20190323.jpg/1280px-Fujikyu_8500_series_Fuji_Excursion_Otsuki_20190323.jpg" alt="Fuji Excursion train" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 6</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">19<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Friday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Tokyo to <em class="italic">Kawaguchiko</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">From Ginza Shintomicho → Shinjuku Station (~25 min)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Limited Express "Fuji Excursion" → Kawaguchiko (~2 hrs)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Check in at Hotel Koryu, lake-view room</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Easy afternoon: Lake Kawaguchi walk, ropeway up Mt. Tenjo</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Hotel onsen + kaiseki dinner</li>
         </ul>
-        <div class="day-note"><strong>Reserve</strong>Limited Express seats — only a few daily departures.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Reserve</strong>Limited Express seats — only a few daily departures.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">富士山</div><div class="en">Mt. Fuji 5th Station</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Mount_Fuji_from_Hotel_Mt_Fuji_1994-6-22.jpg/1280px-Mount_Fuji_from_Hotel_Mt_Fuji_1994-6-22.jpg" alt="Mt. Fuji" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 7</span>
-      </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">20<sup>th</sup> June</span>
-          <span class="day-meta-day">Saturday</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0">
+          <div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">富士山</div>
+          <div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Mt. Fuji 5th Station</div>
         </div>
-        <h3 class="day-title">5th Station <em>+ Lake Fishing</em></h3>
-        <ul class="day-list">
-          <li>Morning: Bus to Fuji Subaru Line 5th Station (2,300m)</li>
-          <li>Komitake Shrine, food stalls, mountain views</li>
-          <li>Lunch back at the lake</li>
-          <li>Afternoon: Bass fishing on Lake Kawaguchiko</li>
-          <li>Permit (~¥1,100/person) — buy in advance to save</li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Mount_Fuji_from_Hotel_Mt_Fuji_1994-6-22.jpg/1280px-Mount_Fuji_from_Hotel_Mt_Fuji_1994-6-22.jpg" alt="Mt. Fuji" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 7</span>
+      </div>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">20<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Saturday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">5th Station <em class="italic">+ Lake Fishing</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Morning: Bus to Fuji Subaru Line 5th Station (2,300m)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Komitake Shrine, food stalls, mountain views</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Lunch back at the lake</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Afternoon: Bass fishing on Lake Kawaguchiko</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Permit (~¥1,100/person) — buy in advance to save</li>
         </ul>
-        <div class="day-note"><strong>Note</strong>Climbing season opens July 1 — no summit attempts before then. 5th Station is open year-round.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Note</strong>Climbing season opens July 1 — no summit attempts before then. 5th Station is open year-round.</div>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- ============ LEG 3: OSAKA ============ -->
-<section class="leg" id="osaka">
-  <div class="leg-header">
-    <div>
-      <div class="leg-num">参</div>
-      <h2 class="leg-name">Osaka, <em>Kansai energy</em></h2>
-      <p class="section-subtitle">Castle, neon, takoyaki, and a day with Mario.</p>
+<section class="border-t border-rule" id="osaka">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">参</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">Osaka, <em class="italic text-shu">Kansai energy</em></h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">Castle, neon, takoyaki, and a day with Mario.</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Dates</dt><dd class="font-serif text-lg md:text-xl text-sumi">June 21 – 25 · 4 nights</dd></div>
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Hotel</dt><dd class="font-serif text-lg md:text-xl text-sumi">MONday Apart Osaka Namba West</dd></div>
+        <div><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Arrive via</dt><dd class="font-serif text-lg md:text-xl text-sumi">Bus to Mishima → Tokaido Shinkansen</dd></div>
+      </dl>
     </div>
-    <dl class="leg-meta">
-      <div><dt>Dates</dt><dd>June 21 – 25 · 4 nights</dd></div>
-      <div><dt>Hotel</dt><dd>MONday Apart Osaka Namba West</dd></div>
-      <div><dt>Arrive via</dt><dd>Bus to Mishima → Tokaido Shinkansen</dd></div>
-    </dl>
   </div>
-
-  <div class="days">
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">新幹線</div><div class="en">Shinkansen to Osaka</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Shinkansen_N700A_G13_Hamamatsu_20140816.jpg/1280px-Shinkansen_N700A_G13_Hamamatsu_20140816.jpg" alt="Shinkansen N700" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 8</span>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">新幹線</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Shinkansen to Osaka</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Shinkansen_N700A_G13_Hamamatsu_20140816.jpg/1280px-Shinkansen_N700A_G13_Hamamatsu_20140816.jpg" alt="Shinkansen N700" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 8</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">21<sup>st</sup> June</span>
-          <span class="day-meta-day">Sunday</span>
-        </div>
-        <h3 class="day-title">Travel day <em>to Osaka</em></h3>
-        <ul class="day-list">
-          <li>Bus from Kawaguchiko to Mishima Station (~1:40)</li>
-          <li>Tokaido Shinkansen Mishima → Shin-Osaka (~2:00)</li>
-          <li>Subway to Namba — check in at MONday Apart</li>
-          <li>Easy evening — light dinner near hotel</li>
-          <li>Forward bags via Yamato to skip the haul</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">21<sup>st</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Sunday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Travel day <em class="italic">to Osaka</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Bus from Kawaguchiko to Mishima Station (~1:40)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Tokaido Shinkansen Mishima → Shin-Osaka (~2:00)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Subway to Namba — check in at MONday Apart</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Easy evening — light dinner near hotel</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Forward bags via Yamato to skip the haul</li>
         </ul>
-        <div class="day-note"><strong>Plan</strong>5–6 hours door-to-door. Don't book activities tonight.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Plan</strong>5–6 hours door-to-door. Don't book activities tonight.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">大阪城</div><div class="en">Osaka Castle</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Osaka_Castle_Nishinomaru_Garden_April_2005.JPG/1280px-Osaka_Castle_Nishinomaru_Garden_April_2005.JPG" alt="Osaka Castle" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 9</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">大阪城</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Osaka Castle</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Osaka_Castle_Nishinomaru_Garden_April_2005.JPG/1280px-Osaka_Castle_Nishinomaru_Garden_April_2005.JPG" alt="Osaka Castle" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 9</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">22<sup>nd</sup> June</span>
-          <span class="day-meta-day">Monday</span>
-        </div>
-        <h3 class="day-title">Castle morning, <em>sky at dusk</em></h3>
-        <ul class="day-list">
-          <li>Osaka Castle at opening (9am) — beat the heat</li>
-          <li>Walk Castle Park, lunch en route</li>
-          <li>Train to Umeda — underground arcades for A/C</li>
-          <li>Hep Five Ferris Wheel (optional)</li>
-          <li>Umeda Sky Building floating garden — sunset ★</li>
-          <li>Hankyu basement food hall for dinner</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">22<sup>nd</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Monday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Castle morning, <em class="italic">sky at dusk</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Osaka Castle at opening (9am) — beat the heat</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Walk Castle Park, lunch en route</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Train to Umeda — underground arcades for A/C</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Hep Five Ferris Wheel (optional)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Umeda Sky Building floating garden — sunset ★</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Hankyu basement food hall for dinner</li>
         </ul>
-        <div class="day-note"><strong>Note</strong>Umeda Sky doesn't usually require reservation — walk-up is fine.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Note</strong>Umeda Sky doesn't usually require reservation — walk-up is fine.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">USJ</div><div class="en">Universal Studios Japan</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Universal_Studios_Japan_Globe.jpg/1280px-Universal_Studios_Japan_Globe.jpg" alt="Universal Studios Japan globe" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 10</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">USJ</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Universal Studios Japan</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Universal_Studios_Japan_Globe.jpg/1280px-Universal_Studios_Japan_Globe.jpg" alt="USJ globe" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 10</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">23<sup>rd</sup> June</span>
-          <span class="day-meta-day">Tuesday</span>
-        </div>
-        <h3 class="day-title">Universal Studios <em>· Nintendo World</em></h3>
-        <ul class="day-list">
-          <li>Leave Namba by 7am to be at gate before opening</li>
-          <li>Express Pass with Nintendo World access — book ASAP</li>
-          <li>Mario Kart, Yoshi, and new Donkey Kong Country</li>
-          <li>Power-Up Band optional but kid-favorite</li>
-          <li>Stay until evening parade if energy holds</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">23<sup>rd</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Tuesday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Universal Studios <em>· Nintendo World</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Leave Namba by 7am to be at gate before opening</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Express Pass with Nintendo World access — book ASAP</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Mario Kart, Yoshi, and new Donkey Kong Country</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Power-Up Band optional but kid-favorite</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Stay until evening parade if energy holds</li>
         </ul>
-        <div class="day-note"><strong>Critical</strong>Nintendo World needs Express Pass OR app-based timed entry (gets snapped up at park open).</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Critical</strong>Nintendo World needs Express Pass OR app-based timed entry (gets snapped up at park open).</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">道頓堀</div><div class="en">Dotonbori at night</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Dotonbori_Glico_Sign.jpg/1280px-Dotonbori_Glico_Sign.jpg" alt="Dotonbori Glico sign" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 11</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">道頓堀</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Dotonbori at night</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Dotonbori_Glico_Sign.jpg/1280px-Dotonbori_Glico_Sign.jpg" alt="Dotonbori Glico sign" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 11</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">24<sup>th</sup> June</span>
-          <span class="day-meta-day">Wednesday</span>
-        </div>
-        <h3 class="day-title">Shinsaibashi <em>+ Dotonbori</em></h3>
-        <ul class="day-list">
-          <li>Morning: Shinsaibashi covered arcade — shopping for Mom</li>
-          <li>Lunch grazing in Dotonbori (takoyaki, kushikatsu)</li>
-          <li>Kuromon Ichiba market — Osaka's kitchen</li>
-          <li>Tsutenkaku Tower & retro Shinsekai</li>
-          <li>Evening: Dotonbori neon + Tombori River Cruise</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">24<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Wednesday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Shinsaibashi <em>+ Dotonbori</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Morning: Shinsaibashi covered arcade — shopping for Mom</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Lunch grazing in Dotonbori (takoyaki, kushikatsu)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Kuromon Ichiba market — Osaka's kitchen</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Tsutenkaku Tower &amp; retro Shinsekai</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Evening: Dotonbori neon + Tombori River Cruise</li>
         </ul>
-        <div class="day-note"><strong>Reserve</strong>Tombori River Cruise — evening slots fill up.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Reserve</strong>Tombori River Cruise — evening slots fill up.</div>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- ============ LEG 4: TOKI ============ -->
-<section class="leg" id="toki">
-  <div class="leg-header">
-    <div>
-      <div class="leg-num">肆</div>
-      <h2 class="leg-name">Toki, <em>family time</em></h2>
-      <p class="section-subtitle">Pottery country in the Gifu hills, with three days alongside brother's family.</p>
+<section class="border-t border-rule" id="toki">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">肆</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">Toki, <em class="italic text-shu">family time</em></h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">Pottery country in the Gifu hills, with three days alongside brother's family.</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Dates</dt><dd class="font-serif text-lg md:text-xl text-sumi">June 25 – 29 · 4 nights</dd></div>
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Hotel</dt><dd class="font-serif text-lg md:text-xl text-sumi">Airbnb in Toki</dd></div>
+        <div><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Arrive via</dt><dd class="font-serif text-lg md:text-xl text-sumi">Shinkansen → Nagoya → JR Chuo Line → Toki</dd></div>
+      </dl>
     </div>
-    <dl class="leg-meta">
-      <div><dt>Dates</dt><dd>June 25 – 29 · 4 nights</dd></div>
-      <div><dt>Hotel</dt><dd>Airbnb in Toki</dd></div>
-      <div><dt>Arrive via</dt><dd>Shinkansen → Nagoya → JR Chuo Line → Toki</dd></div>
-    </dl>
   </div>
-
-  <div class="days">
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">移動日</div><div class="en">To Toki via Nagoya</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/JR_Central_Nagoya_Station.jpg/1280px-JR_Central_Nagoya_Station.jpg" alt="Nagoya Station" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 12</span>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">移動日</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Toki via Nagoya</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/JR_Central_Nagoya_Station.jpg/1280px-JR_Central_Nagoya_Station.jpg" alt="Nagoya Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 12</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">25<sup>th</sup> June</span>
-          <span class="day-meta-day">Thursday</span>
-        </div>
-        <h3 class="day-title">Travel <em>day to Toki</em></h3>
-        <ul class="day-list">
-          <li>Shin-Osaka → Nagoya (~50 min shinkansen)</li>
-          <li>JR Chuo Line: Nagoya → Tajimi → Toki (~50 min)</li>
-          <li>Forward bags ahead — small towns, small stations</li>
-          <li>Check in at Airbnb, settle for the week</li>
-          <li>Dinner local — explore the neighborhood</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">25<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Thursday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Travel <em class="italic">day to Toki</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Shin-Osaka → Nagoya (~50 min shinkansen)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">JR Chuo Line: Nagoya → Tajimi → Toki (~50 min)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Forward bags ahead — small towns, small stations</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Check in at Airbnb, settle for the week</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Dinner local — explore the neighborhood</li>
         </ul>
-        <div class="day-note"><strong>Logistics</strong>~3 hours total. Travel light, eat well at the destination.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Logistics</strong>~3 hours total. Travel light, eat well at the destination.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">自由</div><div class="en">Open exploration</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Magome-juku_Nakatsugawa_2009.jpg/1280px-Magome-juku_Nakatsugawa_2009.jpg" alt="Magome post town" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 13</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Magome-juku_Nakatsugawa_2009.jpg/1280px-Magome-juku_Nakatsugawa_2009.jpg" alt="Magome post town" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 13</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">26<sup>th</sup> June</span>
-          <span class="day-meta-day">Friday</span>
-        </div>
-        <h3 class="day-title">Open day · <em>options</em></h3>
-        <ul class="day-list">
-          <li>Magome–Tsumago hike — Edo-era post towns (~1 hr away)</li>
-          <li>Inuyama Castle — national-treasure samurai castle</li>
-          <li>Mino-yaki pottery class in Toki</li>
-          <li>Koka Ninja Village — for the kids (~2.5 hrs)</li>
-          <li>Or rest day after the travel push</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">26<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Friday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Open day · <em class="italic">options</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Magome–Tsumago hike — Edo-era post towns (~1 hr away)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Inuyama Castle — national-treasure samurai castle</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Mino-yaki pottery class in Toki</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Koka Ninja Village — for the kids (~2.5 hrs)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Or rest day after the travel push</li>
         </ul>
-        <div class="day-note"><strong>Open</strong>To be decided closer to the date.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Open</strong>To be decided closer to the date.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">自由</div><div class="en">Open exploration</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Inuyama_Castle_05.jpg/1280px-Inuyama_Castle_05.jpg" alt="Inuyama Castle" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 14</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">自由</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Open exploration</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Inuyama_Castle_05.jpg/1280px-Inuyama_Castle_05.jpg" alt="Inuyama Castle" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 14</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">27<sup>th</sup> June</span>
-          <span class="day-meta-day">Saturday</span>
-        </div>
-        <h3 class="day-title">Open day · <em>options</em></h3>
-        <ul class="day-list">
-          <li>Pair with Day 13 for a region exploration</li>
-          <li>Gifu cormorant fishing on the Nagara River (eve)</li>
-          <li>Takayama (further but worth a long day)</li>
-          <li>Local pottery towns + Mino Ceramic Art Museum</li>
-          <li>Prep for brother's family arrival</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">27<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Saturday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Open day · <em class="italic">options</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Pair with Day 13 for a region exploration</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Gifu cormorant fishing on the Nagara River (eve)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Takayama (further but worth a long day)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Local pottery towns + Mino Ceramic Art Museum</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Prep for brother's family arrival</li>
         </ul>
-        <div class="day-note"><strong>Open</strong>To be decided closer to the date.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Open</strong>To be decided closer to the date.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">家族</div><div class="en">Family overlap day</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Tsumago-juku_2008-12.jpg/1280px-Tsumago-juku_2008-12.jpg" alt="Tsumago post town" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 15 ★</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">家族</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Family overlap day</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Tsumago-juku_2008-12.jpg/1280px-Tsumago-juku_2008-12.jpg" alt="Tsumago post town" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 15 ★</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">28<sup>th</sup> June</span>
-          <span class="day-meta-day">Sunday</span>
-        </div>
-        <h3 class="day-title">Brother arrives <em>· with mom</em></h3>
-        <ul class="day-list">
-          <li>Brother's family arrives in Toki</li>
-          <li>Visit with mom — together for the first time this trip</li>
-          <li>Plan a low-key shared meal</li>
-          <li>Maybe a group activity — pottery, local sightseeing</li>
-          <li>Easy evening, family-paced</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">28<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Sunday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Brother arrives <em class="italic">· with mom</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Brother's family arrives in Toki</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Visit with mom — together for the first time this trip</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Plan a low-key shared meal</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Maybe a group activity — pottery, local sightseeing</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Easy evening, family-paced</li>
         </ul>
-        <div class="day-note"><strong>The reason</strong>The day this whole itinerary was built around.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">The reason</strong>The day this whole itinerary was built around.</div>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- ============ LEG 5: TOKYO RETURN ============ -->
-<section class="leg" id="tokyo-return">
-  <div class="leg-header">
-    <div>
-      <div class="leg-num">伍</div>
-      <h2 class="leg-name">Tokyo, <em>departure</em></h2>
-      <p class="section-subtitle">Two nights near Haneda for a soft landing before the long flight home.</p>
+<section class="border-t border-rule" id="tokyo-return">
+  <div class="py-12 md:py-20 max-w-[1400px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-8">
+      <div>
+        <div class="font-jp font-bold leading-[.85] text-shu opacity-95" style="font-size:clamp(4rem,8vw,7rem)">伍</div>
+        <h2 class="font-serif font-light text-[clamp(2.2rem,5vw,5rem)] leading-tight tracking-[-.02em] mt-2">Tokyo, <em class="italic text-shu">departure</em></h2>
+        <p class="font-serif text-base md:text-lg italic text-sumi-soft mt-4 max-w-[600px]">Two nights near Haneda for a soft landing before the long flight home.</p>
+      </div>
+      <dl class="mt-6 md:mt-0 bg-paper border border-rule px-5 md:px-6 py-5 md:py-6 md:border-l-[4px] md:border-l-shu">
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Dates</dt><dd class="font-serif text-lg md:text-xl text-sumi">June 29 – July 1 · 2 nights</dd></div>
+        <div class="mb-3"><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Hotel</dt><dd class="font-serif text-lg md:text-xl text-sumi">TBD — near Haneda or Shinagawa</dd></div>
+        <div><dt class="text-[.7rem] tracking-[.18em] uppercase text-sumi-soft mb-2">Depart via</dt><dd class="font-serif text-lg md:text-xl text-sumi">Haneda · 1:00 PM flight, July 1</dd></div>
+      </dl>
     </div>
-    <dl class="leg-meta">
-      <div><dt>Dates</dt><dd>June 29 – July 1 · 2 nights</dd></div>
-      <div><dt>Hotel</dt><dd>TBD — near Haneda or Shinagawa</dd></div>
-      <div><dt>Depart via</dt><dd>Haneda · 1:00 PM flight, July 1</dd></div>
-    </dl>
   </div>
-
-  <div class="days">
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">羽田</div><div class="en">To Haneda area</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Shinagawa_Station_East_Exit.jpg/1280px-Shinagawa_Station_East_Exit.jpg" alt="Shinagawa Station" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 16</span>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto px-6 pb-16">
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">羽田</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">To Haneda area</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Shinagawa_Station_East_Exit.jpg/1280px-Shinagawa_Station_East_Exit.jpg" alt="Shinagawa Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 16</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">29<sup>th</sup> June</span>
-          <span class="day-meta-day">Monday</span>
-        </div>
-        <h3 class="day-title">Toki to <em>Haneda area</em></h3>
-        <ul class="day-list">
-          <li>Toki → Nagoya (~50 min on local + transfer)</li>
-          <li>Tokaido Shinkansen Nagoya → Shinagawa (~1:40)</li>
-          <li>Check in near Shinagawa or Haneda</li>
-          <li>Easy local dinner — feet up</li>
-          <li>Forward bags from Toki to Haneda directly</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">29<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Monday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Toki to <em class="italic">Haneda area</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Toki → Nagoya (~50 min on local + transfer)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Tokaido Shinkansen Nagoya → Shinagawa (~1:40)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Check in near Shinagawa or Haneda</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Easy local dinner — feet up</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Forward bags from Toki to Haneda directly</li>
         </ul>
-        <div class="day-note"><strong>Tip</strong>Yamato can ship bags Toki → Haneda Airport. Pick up at JAL ABC counter on departure.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Tip</strong>Yamato can ship bags Toki → Haneda Airport. Pick up at JAL ABC counter on departure.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">横浜</div><div class="en">Final explorations</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Yokohama_Minato_Mirai_21_at_night.jpg/1280px-Yokohama_Minato_Mirai_21_at_night.jpg" alt="Yokohama Minato Mirai" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 17</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">横浜</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Final explorations</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Yokohama_Minato_Mirai_21_at_night.jpg/1280px-Yokohama_Minato_Mirai_21_at_night.jpg" alt="Yokohama Minato Mirai" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 17</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">30<sup>th</sup> June</span>
-          <span class="day-meta-day">Tuesday</span>
-        </div>
-        <h3 class="day-title">Last day <em>· options</em></h3>
-        <ul class="day-list">
-          <li>Yokohama: Chinatown + Cup Noodles Museum</li>
-          <li>Anything you missed in Tokyo (DisneySea, neighborhood)</li>
-          <li>Edo Wonderland Nikko Edomura (samurai/ninja park)</li>
-          <li>Shibuya/Ginza for last shopping</li>
-          <li>Pack early — early morning departure tomorrow</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">30<sup>th</sup> June</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Tuesday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Last day <em class="italic">· options</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Yokohama: Chinatown + Cup Noodles Museum</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Anything you missed in Tokyo (DisneySea, neighborhood)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Edo Wonderland Nikko Edomura (samurai/ninja park)</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Shibuya/Ginza for last shopping</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Pack early — early morning departure tomorrow</li>
         </ul>
-        <div class="day-note"><strong>Open</strong>Decide based on energy and weather.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Open</strong>Decide based on energy and weather.</div>
       </div>
     </article>
-
-    <article class="day-card">
-      <div class="day-image">
-        <div class="day-image-fallback"><div class="jp">出発</div><div class="en">Departure</div></div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Haneda_Airport_International_Terminal.jpg/1280px-Haneda_Airport_International_Terminal.jpg" alt="Haneda Airport" loading="lazy" onerror="this.style.display='none'">
-        <span class="day-tag">Day 18</span>
+    <article class="day-c bg-paper border border-rule overflow-hidden flex flex-col">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-washi text-center p-4 z-0"><div class="font-jp text-[2.5rem] md:text-4xl font-bold opacity-85 mb-1">出発</div><div class="font-serif italic text-xs md:text-sm opacity-75 tracking-[.05em]">Departure</div></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Haneda_Airport_International_Terminal.jpg/1280px-Haneda_Airport_International_Terminal.jpg" alt="Haneda Airport" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-10 day-img" onerror="this.style.display='none'">
+        <span class="absolute top-3 left-3 bg-washi text-sumi px-2.5 py-1.5 text-[.7rem] tracking-[.15em] uppercase font-semibold z-20">Day 18</span>
       </div>
-      <div class="day-body">
-        <div class="day-meta">
-          <span class="day-meta-date">1<sup>st</sup> July</span>
-          <span class="day-meta-day">Wednesday</span>
-        </div>
-        <h3 class="day-title">Home <em>· さようなら</em></h3>
-        <ul class="day-list">
-          <li>Leave hotel by 9–10am</li>
-          <li>Arrive Haneda 11am for 1pm flight</li>
-          <li>Pick up forwarded bags at JAL ABC counter</li>
-          <li>Last bowl of ramen past security</li>
-          <li>Fly home with full hearts (and luggage)</li>
+      <div class="p-4 md:p-5 flex flex-col flex-1">
+        <div class="flex justify-between items-baseline mb-4 border-b border-rule pb-4"><span class="font-serif text-xl md:text-2xl font-normal">1<sup>st</sup> July</span><span class="text-[.7rem] tracking-[.2em] uppercase text-shu font-semibold">Wednesday</span></div>
+        <h3 class="font-serif text-lg md:text-xl font-normal leading-snug mb-3">Home <em class="italic">· さようなら</em></h3>
+        <ul class="list-none mb-4 pl-0 space-y-2">
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Leave hotel by 9–10am</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Arrive Haneda 11am for 1pm flight</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Pick up forwarded bags at JAL ABC counter</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Last bowl of ramen past security</li>
+          <li class="relative pl-6 text-sm text-sumi-soft leading-[1.45] before:content-[\'\'] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-shu">Fly home with full hearts (and luggage)</li>
         </ul>
-        <div class="day-note"><strong>Note</strong>Haneda is quick and easy. 2 hours pre-flight is plenty.</div>
+        <div class="mt-auto pt-3 px-4 pb-3 bg-washi border-l-2 border-gold text-sm text-sumi-soft italic"><strong class="block mb-1 text-sumi font-semibold text-[.7rem] tracking-[.15em] uppercase font-normal">Note</strong>Haneda is quick and easy. 2 hours pre-flight is plenty.</div>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- ============ BOOKINGS ============ -->
-<section class="bookings">
-  <div class="bookings-inner">
-    <div class="section-eyebrow">予 約 表 · The Booking List</div>
-    <h2 class="section-title">What to <em>reserve</em>, when</h2>
-
-    <div class="bookings-grid">
-
-      <div class="booking-card">
-        <div class="booking-priority urgent">Book this week</div>
-        <div class="booking-name">USJ Express Pass</div>
-        <div class="booking-detail">With Nintendo World access. Sells out 2–4 weeks ahead, especially summer.</div>
+<section class="bg-sumi text-washi py-12 md:py-24 relative overflow-hidden">
+  <div class="absolute right-[-3rem] top-[-2rem] font-jp text-[14rem] md:text-[24rem] font-bold text-shu opacity-[.08] pointer-events-none leading-none">予</div>
+  <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+    <div class="font-jp text-[.95rem] tracking-[.4em] text-gold-soft mb-4">予 約 表 · The Booking List</div>
+    <h2 class="font-serif font-light text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-[-.02em]">What to <em class="italic text-gold-soft">reserve</em>, when</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-10 md:mt-16">
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-shu text-washi">Book this week</div>
+        <div class="font-serif text-lg md:text-xl mb-2">USJ Express Pass</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">With Nintendo World access. Sells out 2–4 weeks ahead, especially summer.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority urgent">Book this week</div>
-        <div class="booking-name">Shibuya Sky</div>
-        <div class="booking-detail">Sunset slots disappear fastest. Book on the official site for June 17.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-shu text-washi">Book this week</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Shibuya Sky</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Sunset slots disappear fastest. Book on the official site for June 17.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority urgent">Book this week</div>
-        <div class="booking-name">Limited Express Fuji</div>
-        <div class="booking-detail">Reserved seats, only a few daily departures. Shinjuku → Kawaguchiko, June 19.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-shu text-washi">Book this week</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Limited Express Fuji</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Reserved seats, only a few daily departures. Shinjuku → Kawaguchiko, June 19.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority urgent">Book this week</div>
-        <div class="booking-name">Shinkansen seats</div>
-        <div class="booking-detail">Mishima → Shin-Osaka (June 21), Nagoya → Shinagawa (June 29).</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-shu text-washi">Book this week</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Shinkansen seats</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Mishima → Shin-Osaka (June 21), Nagoya → Shinagawa (June 29).</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority soon">2–4 weeks out</div>
-        <div class="booking-name">Tokyo Skytree</div>
-        <div class="booking-detail">Timed entry tickets online for June 15. Sunday afternoons get crowded.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-gold text-sumi">2–4 weeks out</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Tokyo Skytree</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Timed entry tickets online for June 15. Sunday afternoons get crowded.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority soon">2–4 weeks out</div>
-        <div class="booking-name">Fuji 5th Station</div>
-        <div class="booking-detail">Bus tickets or guided tour for June 20. Confirm Subaru Line is open.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-gold text-sumi">2–4 weeks out</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Fuji 5th Station</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Bus tickets or guided tour for June 20. Confirm Subaru Line is open.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority soon">2–4 weeks out</div>
-        <div class="booking-name">Lake Kawaguchiko Fishing</div>
-        <div class="booking-detail">Guide for June 20 afternoon. Ask Hotel Koryu to arrange or book a charter directly.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-gold text-sumi">2–4 weeks out</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Lake Kawaguchiko Fishing</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Guide for June 20 afternoon. Ask Hotel Koryu to arrange or book a charter directly.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority later">Closer to date</div>
-        <div class="booking-name">Tombori River Cruise</div>
-        <div class="booking-detail">Evening slot June 24. Book on the day or 1 week ahead.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-[rgba(247,241,230,.15)] text-washi">Closer to date</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Tombori River Cruise</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Evening slot June 24. Book on the day or 1 week ahead.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority later">Closer to date</div>
-        <div class="booking-name">Haneda-area hotel</div>
-        <div class="booking-detail">Two nights, June 29 – July 1. Shinagawa or near terminals.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-[rgba(247,241,230,.15)] text-washi">Closer to date</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Haneda-area hotel</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Two nights, June 29 – July 1. Shinagawa or near terminals.</div>
       </div>
-
-      <div class="booking-card">
-        <div class="booking-priority later">Closer to date</div>
-        <div class="booking-name">Klook airport transfer</div>
-        <div class="booking-detail">Haneda pickup for June 14, 5 people + luggage to Ginza Shintomicho.</div>
+      <div class="bk border border-[rgba(247,241,230,.15)] p-5 md:p-6">
+        <div class="text-[0.65rem] tracking-[.2em] px-2 py-1 uppercase font-bold mb-3 inline-block bg-[rgba(247,241,230,.15)] text-washi">Closer to date</div>
+        <div class="font-serif text-lg md:text-xl mb-2">Klook airport transfer</div>
+        <div class="text-sm text-[rgba(247,241,230,.7)] leading-relaxed">Haneda pickup for June 14, 5 people + luggage to Ginza Shintomicho.</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ TRAVEL NOTES ============ -->
-<section class="notes">
-  <div class="section-eyebrow">注 意 · Practical Notes</div>
-  <h2 class="section-title">Things to <em>remember</em></h2>
-
-  <div class="notes-grid">
-    <div class="note-card">
-      <h3><span class="num">一</span>Rainy season</h3>
-      <p>Mid-June through mid-July is tsuyu across most of Honshu. Expect humid, sticky days with rain showers — pack a light rain jacket and have indoor backups for outdoor plans.</p>
-    </div>
-
-    <div class="note-card">
-      <h3><span class="num">二</span>Forward your bags</h3>
-      <p>Yamato (takkyubin) ships luggage hotel to hotel for ¥2–3,000 a bag. Use it on every transition day: Tokyo → Fuji → Osaka → Toki → Haneda. Travel only with overnight bags.</p>
-    </div>
-
-    <div class="note-card">
-      <h3><span class="num">三</span>Suica / Pasmo</h3>
-      <p>Get IC cards for everyone on arrival at Haneda. Welcome Suica is the tourist version. Tap on/off all trains, buses, and most convenience stores.</p>
-    </div>
-
-    <div class="note-card">
-      <h3><span class="num">四</span>Heat in late June</h3>
-      <p>Osaka and Toki get hot and humid (28–32°C). Plan outdoor stops for morning and evening; reserve midday for arcades, food halls, museums, USJ shaded areas.</p>
-    </div>
-
-    <div class="note-card">
-      <h3><span class="num">五</span>Reservations for 5</h3>
-      <p>A party of 5 is hard to seat at small Tokyo restaurants. Reserve via Tabelog or Pocket Concierge, or be ready to split into 2 + 3 at the counter.</p>
-    </div>
-
-    <div class="note-card">
-      <h3><span class="num">六</span>JR Pass math</h3>
-      <p>Run your route through japan-guide.com's calculator before buying. With this itinerary, the 14-day pass may or may not pencil out — point-to-point tickets are often cheaper now.</p>
-    </div>
+<section class="py-12 md:py-24 max-w-[1100px] mx-auto px-6">
+  <div class="font-jp text-[.95rem] tracking-[.4em] text-shu mb-4">注 意 · Practical Notes</div>
+  <h2 class="font-serif font-light text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-[-.02em] text-sumi">Things to <em class="italic text-shu">remember</em></h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mt-10">
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">一</span>Rainy season</h3><p class="text-sumi-soft leading-relaxed">Mid-June through mid-July is tsuyu across most of Honshu. Expect humid, sticky days with rain showers — pack a light rain jacket and have indoor backups for outdoor plans.</p></div>
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">二</span>Forward your bags</h3><p class="text-sumi-soft leading-relaxed">Yamato (takkyubin) ships luggage hotel to hotel for ¥2–3,000 a bag. Use it on every transition day: Tokyo → Fuji → Osaka → Toki → Haneda. Travel only with overnight bags.</p></div>
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">三</span>Suica / Pasmo</h3><p class="text-sumi-soft leading-relaxed">Get IC cards for everyone on arrival at Haneda. Welcome Suica is the tourist version. Tap on/off all trains, buses, and most convenience stores.</p></div>
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">四</span>Heat in late June</h3><p class="text-sumi-soft leading-relaxed">Osaka and Toki get hot and humid (28–32°C). Plan outdoor stops for morning and evening; reserve midday for arcades, food halls, museums, USJ shaded areas.</p></div>
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">五</span>Reservations for 5</h3><p class="text-sumi-soft leading-relaxed">A party of 5 is hard to seat at small Tokyo restaurants. Reserve via Tabelog or Pocket Concierge, or be ready to split into 2 + 3 at the counter.</p></div>
+    <div><h3 class="font-serif text-xl md:text-2xl font-normal mb-3"><span class="text-shu font-jp mr-2">六</span>JR Pass math</h3><p class="text-sumi-soft leading-relaxed">Run your route through japan-guide.com's calculator before buying. With this itinerary, the 14-day pass may or may not pencil out — point-to-point tickets are often cheaper now.</p></div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="jp">日 本</div>
-  <p>Eighteen days · five travelers · one mountain.</p>
-  <small>June 14 — July 1, 2026</small>
+<footer class="bg-sumi text-washi py-12 md:py-16 text-center">
+  <div class="font-jp text-3xl text-shu mb-4 tracking-[.5em]">日 本</div>
+  <p class="font-serif italic text-lg mb-2">Eighteen days · five travelers · one mountain.</p>
+  <small class="text-[.75rem] tracking-[.2em] uppercase text-[rgba(247,241,230,.5)]">June 14 — July 1, 2026</small>
 </footer>
 
 </body>
